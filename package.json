@@ -1,7 +1,7 @@
 {
   "name": "mongo-clinet",
   "version": "1.0.0",
-  "description": "",
+  "description": "A little MongoDB library for connect a database and do CRUD",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,5 +12,9 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "mongodb": "^3.5.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bautistaj/mongo-client"
   }
 }

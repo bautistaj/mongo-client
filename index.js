@@ -9,7 +9,7 @@ const MONGO_URI = `mongodb+srv://${USER}:${PASSWORD}@${config.dbHost}/${DB_NAME}
 
 class MongoLib {
   constructor(){
-    this.client = new MongoClient(MONGO_URI, {useNewUrlParser: true });
+    this.client = new MongoClient(MONGO_URI, { useUnifiedTopology: true ,useNewUrlParser: true});
     this.dbName = DB_NAME;
   }
 
@@ -38,6 +38,7 @@ class MongoLib {
    * Get all data from a collection
    * @param {String} collection 
    * @param {JSON} query 
+   * @returns {[]} Array of objects
    */
   getAll(collection, query) {
     return this.connect().then(db => {
@@ -52,6 +53,7 @@ class MongoLib {
    * Get spesific document from a collection
    * @param {String} collection 
    * @param {String} id 
+   * @returns {} Object
    */
   get(collection, id) {
     return this.connect().then(db => {
@@ -63,7 +65,7 @@ class MongoLib {
    * Create new document
    * @param {String} collection 
    * @param {JSON} data 
-   * @returns {String}
+   * @returns {String} id created
    */
   create(collection, data) {
     return this.connect()
@@ -78,7 +80,7 @@ class MongoLib {
    * @param {String} collection 
    * @param {String} id 
    * @param {JSON} data 
-   * @returns {}
+   * @returns {} Obejct updated
    */
   update(collection, id, data) {
     return this.connect()
@@ -92,8 +94,9 @@ class MongoLib {
 
   /**
    * Delete document
-   * @param {*} collection 
-   * @param {*} id 
+   * @param {string} collection 
+   * @param {string} id
+   * @returns {string} id deleted
    */
   delete(collection, id) {
     return this.connect()
